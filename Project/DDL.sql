@@ -1,0 +1,1 @@
+-- This is used to create the tablenames and the columns in the database
