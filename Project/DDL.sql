@@ -18,10 +18,10 @@ CREATE TABLE Professor(
 --2)Departments
 CREATE TABLE Department(
   deptID INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(20),
+  name VARCHAR(255),
   telephone BIGINT,
   officeLocation VARCHAR(255),
-  chairpersonSSN VARCHAR(11),
+  chairpersonSSN VARCHAR(10),
   FOREIGN KEY (chairpersonSSN) REFERENCES Professor(SSN)
 );
 --3a)Courses
