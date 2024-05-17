@@ -22,7 +22,7 @@ VALUES('335', 'Algorithm Engineering', 'Algorithm Design in Three Acts', 3, 1);
 INSERT INTO Courses(courseID, title, textbook, units, deptID)
 VALUES('170B', 'Mathematical Structure II', 'Linear Algebra with Applications', 3, 2);
 INSERT INTO Courses(courseID, title, textbook, units, deptID)
-VALUES('338', 'Statistics Applied to Natural Sciences', 'OpenIntro Statistics (OS)', 4, 2)
+VALUES('338', 'Statistics Applied to Natural Sciences', 'OpenIntro Statistics (OS)', 4, 2);
 
 --6 Sections
 INSERT INTO Sections(courseID, secID, classroom, seats, meetingDays, startTime, endTime, professorSSN)
@@ -38,5 +38,6 @@ VALUES('362', 1, 'CS-104', 35, 'Saturday', '09:00', '12:00', '423897106');
 INSERT INTO Sections(courseID, secID, classroom, seats, meetingDays, startTime, endTime, professorSSN)
 VALUES('338', 1, 'MH-655', 35, 'Monday/Wednesday', '15:30', '17:45', '293847123');
 --8 Students
-
+INSERT INTO Student(cwID, firstName, lastName, streetName, city, state, zip, areaCode, phoneNumber, majordeptID)
+VALUES('889362406', 'Kevin', 'Ramirez', '465 Main St', 'Santa Clara', 'CA', '95050', '650', '6493785', 1);
 --20 Enrollments
