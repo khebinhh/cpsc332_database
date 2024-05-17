@@ -42,7 +42,7 @@ VALUES('338', 1, 'MH-655', 35, 'Monday/Wednesday', '15:30', '17:45', '293847123'
 INSERT INTO Student(cwID, firstName, lastName, streetName, city, state, zip, areaCode, phoneNumber, majordeptID)
 VALUES('889362406', 'Kevin', 'Ramirez', '465 Main St', 'Santa Clara', 'CA', '95050', '650', '6493785', 1);
 INSERT INTO Student(cwID, firstName, lastName, streetName, city, state, zip, areaCode, phoneNumber, majordeptID)
-VALUES('885547844', 'Kenny', 'Ly', '375 Cutlery St', 'Anaheim', 'CA', '92801', '310', '4151234567', 2);
+VALUES('885547844', 'Kenny', 'Ly', '375 Cutlery St', 'Anaheim', 'CA', '92801', '310', '4151234567', 1);
 INSERT INTO Student(cwID, firstName, lastName, streetName, city, state, zip, areaCode, phoneNumber, majordeptID)
 VALUES('885050286', 'Nezar', 'Humound', '132 Carnival St', 'San Diego', 'CA', '92130', '310', '7483805', 1);
 INSERT INTO Student(cwID, firstName, lastName, streetName, city, state, zip, areaCode, phoneNumber, majordeptID)
@@ -52,8 +52,48 @@ VALUES('884678456', 'Theresa', 'Nguyen', '462 Standford St', 'Irvine', 'CA', '92
 INSERT INTO Student(cwID, firstName, lastName, streetName, city, state, zip, areaCode, phoneNumber, majordeptID)
 VALUES('883967452', 'Jullian', 'Brown', '825 Central Ave', 'Santa Ana', 'CA', '95050', '650', '6493785', 2);
 INSERT INTO Student(cwID, firstName, lastName, streetName, city, state, zip, areaCode, phoneNumber, majordeptID)
-VALUES('882678456', 'Omar', 'Bello', '836 Victory St', 'Anaheim', 'CA', '92801', '310', '7483805', 1);
+VALUES('882678456', 'Omar', 'Bello', '836 Victory St', 'Anaheim', 'CA', '92801', '310', '7483805', 2);
 INSERT INTO Student(cwID, firstName, lastName, streetName, city, state, zip, areaCode, phoneNumber, majordeptID)
 VALUES('885478456', 'Naomi', 'Park', '742 Jefferson St', 'Corona', 'CA', '92801', '310', '7483805', 2);
 
 --20 Enrollments
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('889362406', '332', 1, 'A-');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('885547844', '332', 1, 'B+');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('885050286', '332', 1, 'C');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('882146745', '170B', 1, 'B-');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('884678456', '335', 1, 'A');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('883967452', '338', 1, 'B+');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('882678456', '170B', 2, 'C-');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('885478456', '170B', 2, 'A+');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('889362406', '338', 1, 'A-');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('885547844', '362', 1, 'A');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('885050286', '362', 1, 'B');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('882146745', '170B', 2, 'B+');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('884678456', '362', 1, 'A');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('883967452', '335', 1, 'B-');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('882678456', '338', 1, 'C+');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('885478456', '362', 1, 'B');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('885547844', '170B', 1, 'A+');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('884678456', '338', 1, 'B-');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('883967452', '362', 1, 'B');
+INSERT INTO Enrollments(cwID, courseID, secID, grade)
+VALUES('885050286', '335', 1, 'A-');
