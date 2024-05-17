@@ -91,7 +91,9 @@
                 die("<div class='message'>Connection failed: " . $conn->connect_error . "</div>");
             }
 
-            function displayCourseSections($conn, $courseID) {
+            if (isset($_POST['cn'])) {
+                $cn = $_POST['cn'];
+            
                 $stmt = $conn->prepare("SELECT s.secID, s.classroom, s.meetingDays, s.startTime, s.endTime, COUNT(e.cwID) AS studentCount
                                         FROM Sections s
                                         LEFT JOIN Enrollments e ON s.courseID = e.courseID AND s.secID = e.secID
@@ -111,9 +113,9 @@
                     echo "<div class='message'>No results found for course number {$courseID}.</div>";
                 }
                 $stmt->close();
-            }
+            } else if (isset($_POST['cwid'])) {
+                $cwid = $_POST['cwid']
 
-            function displayStudentGrades($conn, $cwid) {
                 $stmt = $conn->prepare("SELECT c.courseID, c.title, e.grade
                                         FROM Courses c
                                         JOIN Enrollments e ON c.courseID = e.courseID
@@ -133,17 +135,6 @@
                 }
                 $stmt->close();
             }
-
-            if (isset($_POST['cn'])) {
-                $cn = $_POST['cn'];
-                displayCourseSections($conn, $cn);
-            }
-
-            if (isset($_POST['cwid'])) {
-                $cwid = $_POST['cwid'];
-                displayStudentGrades($conn, $cwid);
-            }
-
             $conn->close();
         }
         ?>
