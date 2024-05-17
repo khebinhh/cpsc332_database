@@ -1,4 +1,3 @@
-
 --3 Professors ex.
 INSERT INTO Professor(SSN, firstName, lastName, streetName, city, state, zip, areaCode, phoneNumber, sex, title, salary, degrees)
 VALUES('423897106', 'Swayam', 'Pati', '123 Main St', 'Santa Clara', 'CA', '95050', '650', '6493785', 'F', 'Dr.', '80000', 'Ph.D in Computer Science');
@@ -38,6 +37,7 @@ INSERT INTO Sections(courseID, secID, classroom, seats, meetingDays, startTime, 
 VALUES('362', 1, 'CS-104', 35, 'Saturday', '09:00', '12:00', '423897106');
 INSERT INTO Sections(courseID, secID, classroom, seats, meetingDays, startTime, endTime, professorSSN)
 VALUES('338', 1, 'MH-655', 35, 'Monday/Wednesday', '15:30', '17:45', '293847123');
+
 --8 Students
 INSERT INTO Student(cwID, firstName, lastName, streetName, city, state, zip, areaCode, phoneNumber, majordeptID)
 VALUES('889362406', 'Kevin', 'Ramirez', '465 Main St', 'Santa Clara', 'CA', '95050', '650', '6493785', 1);
@@ -55,4 +55,5 @@ INSERT INTO Student(cwID, firstName, lastName, streetName, city, state, zip, are
 VALUES('882678456', 'Omar', 'Bello', '836 Victory St', 'Anaheim', 'CA', '92801', '310', '7483805', 1);
 INSERT INTO Student(cwID, firstName, lastName, streetName, city, state, zip, areaCode, phoneNumber, majordeptID)
 VALUES('885478456', 'Naomi', 'Park', '742 Jefferson St', 'Corona', 'CA', '92801', '310', '7483805', 2);
+
 --20 Enrollments
