@@ -26,7 +26,17 @@ VALUES('338', 'Statistics Applied to Natural Sciences', 'OpenIntro Statistics (O
 
 --6 Sections
 INSERT INTO Sections(courseID, secID, classroom, seats, meetingDays, startTime, endTime, professorSSN)
-VALUES()
+VALUES('335', 1, 'CS-104', 45, 'Friday', '13:00', '15:45', '423897106');
+INSERT INTO Sections(courseID, secID, classroom, seats, meetingDays, startTime, endTime, professorSSN)
+VALUES('332', 1, 'CS-300', 35, 'Monday/Wednesday', '10:00', '11:15', '386724059');
+INSERT INTO Sections(courseID, secID, classroom, seats, meetingDays, startTime, endTime, professorSSN)
+VALUES('170B', 1, 'MH-487', 40, 'Monday/Wednesday', '11:30', '12:45', '293847123');
+INSERT INTO Sections(courseID, secID, classroom, seats, meetingDays, startTime, endTime, professorSSN)
+VALUES('170B', 2, 'MH-487', 40, 'Tuesday/Thursday', '16:00', '17:15', '293847123');
+INSERT INTO Sections(courseID, secID, classroom, seats, meetingDays, startTime, endTime, professorSSN)
+VALUES('362', 1, 'CS-104', 35, 'Saturday', '09:00', '12:00', '423897106');
+INSERT INTO Sections(courseID, secID, classroom, seats, meetingDays, startTime, endTime, professorSSN)
+VALUES('338', 1, 'MH-655', 35, 'Monday/Wednesday', '15:30', '17:45', '293847123');
 --8 Students
 
 --20 Enrollments
