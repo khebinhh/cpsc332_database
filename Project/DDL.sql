@@ -7,7 +7,7 @@ CREATE TABLE Professor(
   streetName VARCHAR(20),      --testing size
   city VARCHAR (10),           --testing size
   state VARCHAR(2),            --two for just the two letter abbreviation
-  zip VARCHAR(5)
+  zip VARCHAR(5),
   areaCode VARCHAR(3),         --telephone section
   phoneNumber BIGINT,          --telephone section
   sex CHAR(1),                 -- abbreviation for m or f
