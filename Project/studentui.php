@@ -74,17 +74,11 @@
 
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-/*
-"AAA": This is the hostname of the database server. It can be a domain name, an IP address, 
-       or a local identifier for a server instance.
-"BBB": This is the username used to authenticate with the database server.
-"CCC": This is the password for the specified username.
-"DDD": This is the name of the database to connect to within the server.
-*/
-            $servername = "AAA";
-            $username = "BBB";
-            $password = "CCC";
-            $dbname = "DDD";
+
+            $servername = "localhost";
+            $username = "your_db_username";
+            $password = "your_db_passwrod";
+            $dbname = "your_db_name";
 
             $conn = new mysqli($servername, $username, $password, $dbname);
             if ($conn->connect_error) {

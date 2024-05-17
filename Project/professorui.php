@@ -84,33 +84,23 @@
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (isset($_POST['ssn'])) {
                 $ssn = $_POST['ssn'];
-/*
-"AAA": This is the hostname of the database server. It can be a domain name, an IP address, 
-       or a local identifier for a server instance.
-"BBB": This is the username used to authenticate with the database server.
-"CCC": This is the password for the specified username.
-"DDD": This is the name of the database to connect to within the server.
-*/
-                $servername = "AAA";
-                $username = "BBB";
-                $password = "CCC";
-                $dbname = "DDD";
+                $servername = "localhost";
+                $username = "your_db_username";
+                $password = "your_db_passwrod";
+                $dbname = "your_db_name";
 
-                $conn = new mysqli(AAA, BBB, CCC, DDD);
+                $conn = new mysqli($servername, $username, $password, $dbname);
                 if ($conn->connect_error) {
                     die("<div class='message'>Connection failed: " . $conn->connect_error . "</div>");
                 }
 
-                // Prepare SQL statement to prevent SQL injection
                 $stmt = $conn->prepare("SELECT c.Course_Title, s.Classroom, md.Days, s.Start_Time, s.End_Time FROM courses c, professors p, sections s, meeting_days md WHERE p.SSN = ? AND p.SSN = s.SSN AND c.Course_Num = s.Course_Num AND s.S_Num = md.S_Num AND s.Course_Num = md.Course_Num");
                 $stmt->bind_param("s", $ssn);
 
-                // Execute the query
                 $stmt->execute();
                 $result = $stmt->get_result();
 
                 if ($result->num_rows > 0) {
-                    // Output data of each row
                     echo "<h2>Teaching Schedule</h2>";
                     echo "<table><tr><th>Title</th><th>Classroom</th><th>Meeting Days</th><th>Start Time</th><th>End Time</th></tr>";
                     while($row = $result->fetch_assoc()) {
@@ -127,22 +117,18 @@
                 $cn = $_POST['cn'];
                 $sn = $_POST['sn'];
 
-                // Database connection
                 $conn = new mysqli("localhost", "username", "password", "database");
                 if ($conn->connect_error) {
                     die("<div class='message'>Connection failed: " . $conn->connect_error . "</div>");
                 }
 
-                // Prepare SQL statement to prevent SQL injection
                 $stmt = $conn->prepare("SELECT e.Grade, COUNT(*) as num_students FROM enrollments e WHERE e.Course_Num = ? AND e.S_Num = ? GROUP BY e.Grade");
                 $stmt->bind_param("ss", $cn, $sn);
 
-                // Execute the query
                 $stmt->execute();
                 $result = $stmt->get_result();
 
                 if ($result->num_rows > 0) {
-                    // Output data of each row
                     echo "<h2>Course Grade Distribution</h2>";
                     echo "<table><tr><th>Grade</th><th>Number of Students</th></tr>";
                     while($row = $result->fetch_assoc()) {
