@@ -77,7 +77,7 @@
         <h1>Welcome to the University Database System</h1>
         <p>Select an option below to proceed:</p>
         <div class="button-container">
-            <a href="professor_interface.php" class="button">Professor Interface</a>
+            <a href="professorui.php" class="button">Professor Interface</a>
             <a href="studentui.php" class="button">Student Interface</a>
         </div>
     </div>
