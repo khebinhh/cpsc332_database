@@ -9,7 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #3D85C6;
         }
         .container {
             width: 80%;
@@ -75,48 +75,49 @@
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 /*
-"AAA": This is the hostname of the database server. It can be a domain name, an IP address, or in this case, it seems to be a local identifier for a MariaDB server instance.
+"AAA": This is the hostname of the database server. It can be a domain name, an IP address, 
+       or a local identifier for a server instance.
 "BBB": This is the username used to authenticate with the database server.
 "CCC": This is the password for the specified username.
 "DDD": This is the name of the database to connect to within the server.
 */
+            $servername = "AAA";
+            $username = "BBB";
+            $password = "CCC";
+            $dbname = "DDD";
+
             $conn = new mysqli("AAA", "BBB", "CCC", "DDD");
             if ($conn->connect_error) {
-                die("<p>Connection failed: " . $conn->connect_error . "</p>");
+                die("<div class='message'>Connection failed: " . $conn->connect_error . "</div>");
             }
 
-            if (isset($_POST['cn'])) {
-                $cn = $_POST['cn'];
-
-                $stmt = $conn->prepare("SELECT s.S_Num, s.Classroom, GROUP_CONCAT(DISTINCT md.Days ORDER BY md.Days SEPARATOR ', ') AS Meeting_Days, s.Start_Time, s.End_Time, COUNT(DISTINCT e.CWID) AS Student_Count
-                                        FROM sections s
-                                        JOIN meeting_days md ON s.Course_Num = md.Course_Num AND s.S_Num = md.S_Num
-                                        JOIN enrollments e ON s.Course_Num = e.Course_Num AND s.S_Num = e.S_Num
-                                        WHERE s.Course_Num = ?
-                                        GROUP BY s.S_Num, s.Course_Num");
-                $stmt->bind_param("s", $cn);
+            function displayCourseSections($conn, $courseID) {
+                $stmt = $conn->prepare("SELECT s.secID, s.classroom, s.meetingDays, s.startTime, s.endTime, COUNT(e.cwID) AS studentCount
+                                        FROM Sections s
+                                        LEFT JOIN Enrollments e ON s.courseID = e.courseID AND s.secID = e.secID
+                                        WHERE s.courseID = ?
+                                        GROUP BY s.courseID, s.secID, s.classroom, s.meetingDays, s.startTime, s.endTime");
+                $stmt->bind_param("s", $courseID);
                 $stmt->execute();
                 $result = $stmt->get_result();
 
                 if ($result->num_rows > 0) {
                     echo "<table><tr><th>Section #</th><th>Classroom</th><th>Meeting Days</th><th>Start Time</th><th>End Time</th><th>Student Count</th></tr>";
                     while($row = $result->fetch_assoc()) {
-                        echo "<tr><td>{$row['S_Num']}</td><td>{$row['Classroom']}</td><td>{$row['Meeting_Days']}</td><td>{$row['Start_Time']}</td><td>{$row['End_Time']}</td><td>{$row['Student_Count']}</td></tr>";
+                        echo "<tr><td>{$row['secID']}</td><td>{$row['classroom']}</td><td>{$row['meetingDays']}</td><td>{$row['startTime']}</td><td>{$row['endTime']}</td><td>{$row['studentCount']}</td></tr>";
                     }
                     echo "</table>";
                 } else {
-                    echo "<p>No results found.</p>";
+                    echo "<div class='message'>No results found for course number {$courseID}.</div>";
                 }
                 $stmt->close();
             }
 
-            if (isset($_POST['cwid'])) {
-                $cwid = $_POST['cwid'];
-
-                $stmt = $conn->prepare("SELECT DISTINCT c.Course_Num, c.Course_Title, e.Grade
-                                        FROM courses c
-                                        JOIN enrollments e ON e.Course_Num = c.Course_Num
-                                        WHERE e.CWID = ?");
+            function displayStudentGrades($conn, $cwid) {
+                $stmt = $conn->prepare("SELECT c.courseID, c.title, e.grade
+                                        FROM Courses c
+                                        JOIN Enrollments e ON c.courseID = e.courseID
+                                        WHERE e.cwID = ?");
                 $stmt->bind_param("s", $cwid);
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -124,14 +125,25 @@
                 if ($result->num_rows > 0) {
                     echo "<table><tr><th>Course #</th><th>Course Title</th><th>Grade</th></tr>";
                     while($row = $result->fetch_assoc()) {
-                        echo "<tr><td>{$row['Course_Num']}</td><td>{$row['Course_Title']}</td><td>{$row['Grade']}</td></tr>";
+                        echo "<tr><td>{$row['courseID']}</td><td>{$row['title']}</td><td>{$row['grade']}</td></tr>";
                     }
                     echo "</table>";
                 } else {
-                    echo "<p>No results found.</p>";
+                    echo "<div class='message'>No results found for CWID {$cwid}.</div>";
                 }
                 $stmt->close();
             }
+
+            if (isset($_POST['cn'])) {
+                $cn = $_POST['cn'];
+                displayCourseSections($conn, $cn);
+            }
+
+            if (isset($_POST['cwid'])) {
+                $cwid = $_POST['cwid'];
+                displayStudentGrades($conn, $cwid);
+            }
+
             $conn->close();
         }
         ?>
