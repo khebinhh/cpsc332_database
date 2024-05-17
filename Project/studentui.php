@@ -86,13 +86,13 @@
             $password = "CCC";
             $dbname = "DDD";
 
-            $conn = new mysqli("AAA", "BBB", "CCC", "DDD");
+            $conn = new mysqli($servername, $username, $password, $dbname);
             if ($conn->connect_error) {
                 die("<div class='message'>Connection failed: " . $conn->connect_error . "</div>");
             }
 
             if (isset($_POST['cn'])) {
-                $cn = $_POST['cn'];
+                $courseID = $_POST['cn'];
             
                 $stmt = $conn->prepare("SELECT s.secID, s.classroom, s.meetingDays, s.startTime, s.endTime, COUNT(e.cwID) AS studentCount
                                         FROM Sections s
@@ -114,7 +114,7 @@
                 }
                 $stmt->close();
             } else if (isset($_POST['cwid'])) {
-                $cwid = $_POST['cwid']
+                $cwid = $_POST['cwid'];
 
                 $stmt = $conn->prepare("SELECT c.courseID, c.title, e.grade
                                         FROM Courses c
