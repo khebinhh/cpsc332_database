@@ -26,7 +26,7 @@ CREATE TABLE Department(
 );
 --3a)Courses
 CREATE TABLE Courses(
-  courseID INT PRIMARY KEY,
+  courseID VARCHAR(10) PRIMARY KEY,
   title VARCHAR(20),
   textbook VARCHAR(20),
   units INT,
@@ -35,15 +35,15 @@ CREATE TABLE Courses(
 );
 --3b)Prerequisites
 CREATE TABLE Prerequisites(
-  courseID INT,
-  prereqID INT,
+  courseID VARCHAR(10),
+  prereqID VARCHAR(10),
   PRIMARY KEY (courseID, prereqID)
   FOREIGN KEY (courseID) REFERENCES Courses(courseID),
   FOREIGN KEY (prereqID) REFERENCES Courses(courseID)
 );
 --4)Sections
 CREATE TABLE Sections(
-  courseID INT,
+  courseID VARCHAR(10),
   secID INT,
   classroom VARCHAR(20),
   seats INT,
@@ -80,7 +80,7 @@ CREATE TABLE sMinor(
 --6)Enrollments
 CREATE TABLE Enrollments(
   cwID VARCHAR(9),
-  courseID INT,
+  courseID VARCHAR(10),
   secID INT,
   grade VARCHAR(2),
   PRIMARY KEY (cwID, courseID, secID),
