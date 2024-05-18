@@ -156,10 +156,10 @@
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (isset($_POST['ssn'])) {
                 $ssn = $_POST['ssn'];
-                $servername = "AAA";
-                $username = "BBB";
-                $password = "CCC";
-                $dbname = "DDD";
+                $servername = "kevindb";
+                $username = "cs332e25";
+                $password = "X4x2pBb0";
+                $dbname = "cs332e25";
 
                 $conn = new mysqli($servername, $username, $password, $dbname);
                 if ($conn->connect_error) {
@@ -192,10 +192,10 @@
             } else if (isset($_POST['cn']) && isset($_POST['sn'])) {
                 $cn = $_POST['cn'];
                 $sn = $_POST['sn'];
-                $servername = "AAA";
-                $username = "BBB";
-                $password = "CCC";
-                $dbname = "DDD";
+                $servername = "kevindb";
+                $username = "cs332e25";
+                $password = "X4x2pBb0";
+                $dbname = "cs332e25";
 
                 $conn = new mysqli($servername, $username, $password, $dbname);
                 if ($conn->connect_error) {

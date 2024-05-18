@@ -151,10 +151,10 @@
             "CCC": This is the password for the specified username.
             "DDD": This is the name of the database to connect to within the server.
             */
-            $servername = "AAA";
-            $username = "BBB";
-            $password = "CCC";
-            $dbname = "DDD";
+            $servername = "kevindb";
+            $username = "cs332e25";
+            $password = "X4x2pBb0";
+            $dbname = "cs332e25";
 
             $conn = new mysqli($servername, $username, $password, $dbname);
             if ($conn->connect_error) {
